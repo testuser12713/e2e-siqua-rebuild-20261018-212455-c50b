@@ -1,4 +1,4 @@
-import { el, text } from "../lib/dom.js";
+import { el } from "../lib/dom.js";
 import { serviceAreas } from "../data/services.js";
 import { contacts } from "../data/contacts.js";
 import { pageHero } from "../components/page-hero.js";
@@ -51,32 +51,45 @@ function serviceGrid(services) {
 }
 
 function contactBlock(person) {
+  const card = personCard({
+    name: person.name,
+    role: person.role,
+    email: person.email,
+    phone: person.phone,
+    phoneHref: person.phoneHref,
+    photo: person.photo,
+    more: false,
+    revealDelay: 60
+  });
+
+  const action = el(
+    "div",
+    {},
+    button({
+      label: "Zur Kontaktseite",
+      href: "/kontakt.html",
+      variant: "primary",
+      icon: true
+    })
+  );
+
   return el(
     "section",
-    { class: "section", "aria-label": "Ihr Ansprechpartner", "data-od-id": "ibak-contact" },
+    {
+      class: "section",
+      "aria-labelledby": "ibak-contact-title",
+      "data-od-id": "ibak-contact"
+    },
     el(
       "div",
       { class: "container" },
-      el(
-        "div",
-        { class: "contact-grid" },
-        el("p", { class: "eyebrow" }, text("Ihr Ansprechpartner")),
-        personCard({
-          name: person.name,
-          role: person.role,
-          email: person.email,
-          phone: person.phone,
-          phoneHref: person.phoneHref,
-          photo: person.photo,
-          moreHref: false,
-          revealDelay: 60
-        }),
-        el(
-          "p",
-          {},
-          button({ label: "Zur Kontaktseite", href: "/kontakt.html", variant: "primary", icon: true })
-        )
-      )
+      sectionHeading({
+        eyebrow: "Kontakt",
+        title: "Ihr Ansprechpartner",
+        intro: "Direkter Draht zu den Bereichsleitern – per E-Mail oder Mobiltelefon.",
+        id: "ibak-contact-title"
+      }),
+      el("div", { class: "contact-grid" }, card, action)
     )
   );
 }
