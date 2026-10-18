@@ -1,3 +1,9 @@
+#home-title {
+  hyphens: manual;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .flow-a {
     animation: flow 15s linear infinite;
