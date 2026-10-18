@@ -83,10 +83,18 @@ function mediaData() {
 export function mountImpressum(root) {
   if (!root) return;
 
+  const shellHeading = root.querySelector(":scope > header.section");
+
+  if (shellHeading) {
+    shellHeading.remove();
+  }
+
   const page = legalPage(
     legalHeader({
       eyebrow: "Rechtliches",
-      intro: "Offenlegung nach § 25 MedienG und Angaben zum Diensteanbieter."
+      title: "Impressum",
+      intro: "Offenlegung nach § 25 MedienG und Angaben zum Diensteanbieter.",
+      id: "page-title"
     }),
     prose(
       notice(
