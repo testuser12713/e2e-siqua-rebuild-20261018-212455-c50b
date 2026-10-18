@@ -1,6 +1,7 @@
 import { el, text } from "../lib/dom.js";
 import { company } from "../data/company.js";
-import { button } from "./button.js";
+
+export { companyBand } from "./company-band.js";
 
 function address() {
   return el(
@@ -74,32 +75,6 @@ export function companyFacts() {
       {},
       el("dt", {}, text("UID / FN")),
       el("dd", {}, text(company.uid), el("br"), text(`FN ${company.fn}`))
-    )
-  );
-}
-
-export function companyBand({
-  eyebrow = "Firmendaten",
-  title = `${company.name} in St. Valentin`,
-  intro = "Zwei Geschäftsbereiche unter einem Dach. Alle Kontaktdaten, Ansprechpartner und die Anfahrt finden Sie auf der Kontaktseite.",
-  ctaLabel = "Kontakt & Anfahrt",
-  ctaHref = "/kontakt.html"
-} = {}) {
-  return el(
-    "section",
-    { class: "company-band", "aria-labelledby": "company-title" },
-    el(
-      "div",
-      { class: "container company-band__grid" },
-      el(
-        "div",
-        { "data-reveal": "" },
-        el("p", { class: "eyebrow eyebrow--light" }, text(eyebrow)),
-        el("h2", { id: "company-title" }, text(title)),
-        el("p", {}, text(intro)),
-        el("p", {}, button({ label: ctaLabel, href: ctaHref, variant: "light" }))
-      ),
-      el("div", { "data-reveal": "" }, companyFacts())
     )
   );
 }
