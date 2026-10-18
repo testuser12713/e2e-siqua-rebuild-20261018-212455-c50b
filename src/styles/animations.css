@@ -1,0 +1,95 @@
+[data-reveal].is-hidden {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-reveal) var(--ease),
+    transform var(--duration-reveal) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+a {
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+
+.text-link {
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.text-link::after {
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.button {
+  transition:
+    background-color var(--duration-base) var(--ease),
+    border-color var(--duration-base) var(--ease),
+    color var(--duration-base) var(--ease),
+    transform var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+
+.button .icon-arrow {
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.area-card {
+  transition:
+    transform var(--duration-slower) var(--ease),
+    box-shadow var(--duration-slower) var(--ease),
+    border-color var(--duration-slower) var(--ease);
+}
+
+.service-card {
+  transition:
+    transform var(--duration-slow) var(--ease),
+    border-color var(--duration-slow) var(--ease),
+    box-shadow var(--duration-slow) var(--ease);
+}
+
+.person-card {
+  transition:
+    border-color var(--duration-slow) var(--ease),
+    box-shadow var(--duration-slow) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  [data-reveal],
+  [data-reveal].is-hidden,
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .area-card:hover,
+  .area-card:focus-within,
+  .service-card:hover,
+  .service-card:focus-within,
+  .button:hover,
+  .text-link:hover::after,
+  .button:hover .icon-arrow {
+    transform: none;
+  }
+}
