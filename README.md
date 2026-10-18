@@ -48,6 +48,18 @@ Das Verzeichnis `dist/` kann unverändert von einem beliebigen statischen Webser
 npm run preview
 ```
 
+## Dienste und Start
+
+Das Produkt besteht aus dem einen Dienst **web** (Verzeichnis `.`, Stack `web-vite`, Art `static`): der vollständigen, statischen Firmenwebseite, die aus `dist/` ausgeliefert wird. Ein Anwendungsserver oder eine Datenbank ist nicht Teil des Produkts.
+
+Der Dienst wird mit dem Build erzeugt (`npm run build`) und anschließend mit seinem Startbefehl ausgeliefert:
+
+```bash
+npm start
+```
+
+`npm start` liefert den Inhalt von `dist/` unter `http://localhost:4173` aus; die Startseite ist dort unter `/` erreichbar, die weiteren Seiten unter ihren jeweiligen Dateinamen. Der Befehl `npm start` läuft dauerhaft und wird mit `Strg+C` beendet. Alternativ kann `dist/` unverändert von einem beliebigen statischen Webserver ausgeliefert werden.
+
 ## Seiten und Bedienung
 
 - **Startseite (`/`)** – Claim „Wir bieten Ihnen Sicherheit und Qualität“, zwei Bereichskarten mit je sechs Leistungen und Icons sowie die beiden Ansprechpartner.
